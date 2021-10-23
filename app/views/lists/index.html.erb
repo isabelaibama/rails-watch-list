@@ -1,0 +1,20 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-6 text-center h1">Minhas Listas</div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <ul class="list-group ">
+        <% @lists.each do |list| %>
+          <li class="shadow-sm p-3 mb-2 bg-body rounded list-group-item list-group-item-action">
+            <%= link_to "#{list.name}", list_path(list) %>
+          </li>
+        <% end %>
+      </ul> 
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 h6"><%= link_to ".: Criar nova lista :.", new_list_path %></div>
+  </div>
+</div>

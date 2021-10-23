@@ -1,0 +1,37 @@
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="h1">Lista: <%= @list.name %></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <ul class="list-group ">
+      <% @list.bookmarks.each do |bookmark| %>
+          <li class="shadow-sm p-3 mb-2 bg-body rounded list-group-item list-group-item-action">
+          <%= bookmark.comment %> - <%= bookmark.movie.title %> - <%= link_to "deletar",
+                  bookmark_path(bookmark),
+                  method: :delete,
+                  data: { confirm: "Confirma?" } %>
+          </li>
+        <% end %>
+      </ul> 
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 h6"><%= link_to ".: Exibir Minhas Listas :.", lists_path %></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8" id="form">
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+      <!-- adds bootstrap button  -->
+      <%= f.submit class: 'btn btn-success' %>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
+
