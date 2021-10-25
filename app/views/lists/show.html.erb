@@ -4,34 +4,53 @@
   <div class="row justify-content-center">
     <div class="h1">Lista: <%= @list.name %></div>
   </div>
+
+  
+
+
   <div class="row justify-content-center">
+    <%= simple_form_for [@list, @bookmark], wrapper: :inline_form, html: { class: "row row-cols-auto g-3 align-items-center" }, wrapper_mappings: { boolean: :inline_boolean } do |f| %>
+
+      <div class="col-auto ">
+        <p class="pt-5" >Adicionar Filme: </p>
+      </div>
+      
+      <div class="col-auto me-1">
+        <%= f.label "Comentário:" %>
+        <%= f.input :comment %>
+      </div>
+
+      <div class="col-auto">
+        <%= f.label "Filme:" %>
+        <%= f.association :movie %>
+      </div>
+
+      <div class="col-auto">
+        <%= f.submit 'Salvar', class: "btn btn-ghost mt-4" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="h6"><%= link_to ".: Voltar - Minhas Listas :.", lists_path %></div>
+  </div>
+
+  <div class="row justify-content-center mt-2">
     <div class="col-8">
-      <ul class="list-group ">
+      <ul class="list-group">
       <% @list.bookmarks.each do |bookmark| %>
           <li class="shadow-sm p-3 mb-2 bg-body rounded list-group-item list-group-item-action">
-          <%= bookmark.comment %> - <%= bookmark.movie.title %> - <%= link_to "deletar",
+           Título: <%= bookmark.movie.title %> - Comentário: <%= bookmark.comment %> - <%= link_to "deletar",
                   bookmark_path(bookmark),
                   method: :delete,
                   data: { confirm: "Confirma?" } %>
           </li>
         <% end %>
       </ul> 
-    </div>
+   
   </div>
-  <div class="row justify-content-center">
-    <div class="col-8 h6"><%= link_to ".: Exibir Minhas Listas :.", lists_path %></div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-8" id="form">
-    <%= simple_form_for [@list, @bookmark] do |f| %>
-      
-      <%= f.input :comment %>
-      <%= f.association :movie %>
-      <!-- adds bootstrap button  -->
-      <%= f.submit class: 'btn btn-success' %>
-      
-      <% end %>
-    </div>
-  </div>
+
+  
 </div>
 

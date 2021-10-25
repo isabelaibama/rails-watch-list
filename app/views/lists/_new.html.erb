@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+      <div class="col-12">
+        <%= simple_form_for [@list], wrapper: :inline_form, html: { class: "row row-cols-auto g-3 align-items-center" }, wrapper_mappings: { boolean: :inline_boolean }  do |f| %>
+
+        <div class="col-auto ">
+        <p class="pt-3" >Adicionar Lista: </p>
+        </div>
+        
+        <div class="col-auto me-1">
+          <%= f.input :name, placeholder: 'nome da nova lista' %>
+        </div>
+
+        <div class="col-auto me-1">
+          <!-- adds bootstrap button  -->
+          <%= f.submit 'salvar', class: "btn btn-ghost mt-1" %>
+        </div>
+        
+      <% end %>
+
+    </div>
+
+  </div>
+  <br>
+</div>
+

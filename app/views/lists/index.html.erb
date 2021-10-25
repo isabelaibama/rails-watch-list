@@ -1,11 +1,26 @@
 
+<div> <%=  render partial: 'navbar' %>
+
+</div>
+
+
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-6 text-center h1">Minhas Listas</div>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+    <div class="container">
+      <h1 class="text-center">Listas de Filmes</strong>!</h1>
+      <p class="text-center">Salve listas com seus filmes preferidos.</p>
+      # <a class="btn btn-flat" href="#">Apply now</a>
+    </div>
   </div>
+
   <div class="row justify-content-center">
+    <div class="col-6 text-center"> 
+      <p class="text-center" id="nova"> <%=  render partial: 'new' %> </p> 
+    </div>
+  </div>
+  <div class="row justify-content-center" id="listas">
     <div class="col-6">
-      <ul class="list-group ">
+      <ul class="list-group">
         <% @lists.each do |list| %>
           <li class="shadow-sm p-3 mb-2 bg-body rounded list-group-item list-group-item-action">
             <%= link_to "#{list.name}", list_path(list) %>
@@ -13,8 +28,5 @@
         <% end %>
       </ul> 
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-6 h6"><%= link_to ".: Criar nova lista :.", new_list_path %></div>
   </div>
 </div>
