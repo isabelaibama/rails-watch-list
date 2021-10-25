@@ -1,6 +1,6 @@
 
-<div> <%=  render partial: 'navbar' %>
-
+<div> 
+  <%=  render partial: 'navbar' %>
 </div>
 
 
@@ -9,7 +9,7 @@
     <div class="container">
       <h1 class="text-center">Listas de Filmes</strong>!</h1>
       <p class="text-center">Salve listas com seus filmes preferidos.</p>
-      # <a class="btn btn-flat" href="#">Apply now</a>
+      <p class="text-center"> <%= link_to "Minhas listas", "#listas", class: 'btn btn-flat' %> </p>
     </div>
   </div>
 
